@@ -1,0 +1,9 @@
+.header__navigation-links {
+	display: flex;
+	column-gap: 18px;
+}
+
+.header__navigation-link {
+	color: white;
+	text-decoration: none;
+}
