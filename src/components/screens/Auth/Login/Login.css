@@ -49,3 +49,12 @@
     margin-bottom: 194px;
   }
 }
+
+@media (max-width: 767px) {
+  .login-form {
+    width: 260px;
+  }
+  .login-form__label_last {
+    margin-bottom: 285px;
+  }
+}

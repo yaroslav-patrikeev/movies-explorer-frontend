@@ -5,7 +5,7 @@ function AccountButton({ theme = "dark" }) {
   return (
     <button
       onClick={() => navigation("/profile")}
-      className={`header__account-button ${
+      className={`header__account-button element-hover ${
         theme === "light" && "header__account-button_light"
       }`}
     >

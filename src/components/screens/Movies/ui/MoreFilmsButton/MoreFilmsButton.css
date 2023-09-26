@@ -1,4 +1,5 @@
 .more-films-button {
+  font-family: inherit;
   width: 320px;
   height: 36px;
   margin: 50px 480px 80px;
@@ -13,5 +14,12 @@
 @media (max-width: 1300px) {
   .more-films-button {
     margin: 50px 224px 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .more-films-button {
+    width: 240px;
+    margin: 50px 40px 80px;
   }
 }

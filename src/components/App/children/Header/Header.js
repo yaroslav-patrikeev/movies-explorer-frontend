@@ -18,6 +18,7 @@ function Header({ theme = "dark", authorized = false }) {
     const resize = () => {
       if (window.innerWidth < 1300) return setIsMobile(true);
       setIsMobile(false);
+      setIsMenu(false);
     };
     window.addEventListener("resize", resize);
     return () => {
@@ -39,8 +40,11 @@ function Header({ theme = "dark", authorized = false }) {
   };
   return (
     <header className={`header header_${theme}`}>
-      {isMenu && <MobileMenu setIsMenu={setIsMenu} />}
-      <div className="header__logo" onClick={() => navigation("/")}></div>
+      <MobileMenu setIsMenu={setIsMenu} isMenu={isMenu} />
+      <div
+        className="header__logo element-hover"
+        onClick={() => navigation("/")}
+      ></div>
       {elementsView()}
     </header>
   );

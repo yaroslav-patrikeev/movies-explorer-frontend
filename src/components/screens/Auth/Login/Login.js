@@ -9,16 +9,24 @@ function Login() {
       <form className="login-form">
         <label className="login-form__label">
           E-mail
-          <input className="login-form__input" type="email" />
+          <input
+            className="login-form__input"
+            type="email"
+            placeholder="Ваш E-mail"
+            required
+          />
           <span className="login-form__error"></span>
         </label>
         <label className="login-form__label login-form__label_last">
           Пароль
           <input
-            className="login-form__input login-form__input_error"
+            className="login-form__input"
             type="password"
+            placeholder="Ваш пароль"
+            minLength={8}
+            required
           />
-          <span className="login-form__error">Что-то пошло не так...</span>
+          <span className="login-form__error"></span>
         </label>
         <AuthFooter buttonText={"Войти"} />
       </form>

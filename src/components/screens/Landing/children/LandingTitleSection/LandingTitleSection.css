@@ -32,7 +32,10 @@
 }
 
 .landing-title-section__button {
+  font-family: inherit;
   padding: 10px 20px;
+  font-size: 12px;
+  line-height: 16px;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 60%);
   background-color: transparent;
@@ -65,5 +68,27 @@
     text-align: center;
     margin-bottom: 92px;
     max-width: 260px;
+  }
+}
+
+@media (max-width: 767px) {
+  .landing-title-section__image {
+    width: 210px;
+    height: 206px;
+    margin-bottom: 44px;
+  }
+  .landing-title-section {
+    padding: 70px 10px 30px;
+  }
+  .landing-title-section__title {
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -1.2px;
+    width: 300px;
+    margin-bottom: 24px;
+  }
+
+  .landing-title-section__subtitle {
+    margin-bottom: 90px;
   }
 }

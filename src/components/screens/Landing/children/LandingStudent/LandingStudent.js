@@ -13,13 +13,21 @@ function LandingStudent() {
             Фронтенд-разработчик, 24 года
           </p>
           <p className="landing-student__long-description">
-            Я родился и живу в Саратове, закончил факультет экономики СГУ. У
-            меня есть жена и дочь. Я люблю слушать музыку, а ещё увлекаюсь
-            бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ
-            Контур». После того, как прошёл курс по веб-разработке, начал
-            заниматься фриланс-заказами и ушёл с постоянной работы.
+            Я&nbsp;родился в&nbsp;Коломне, сейчас живу в&nbsp;Москве. Закончил
+            факультет мировой музыкальной культуры Академии им. Маймонида.
+            По&nbsp;профессии эстрадно-джазовый певец. После вуза начал работать
+            педагогом по вокалу. Программирование стало интересным увлечением,
+            возможностью переключаться. Пройдя путь обучения в&nbsp;Яндекс
+            Практикуме я&nbsp;многое переосмыслил. Понял, что хочу приносить
+            пользу людям, упрощая их жизнь, поэтому собираюсь связать свою жизнь
+            с&nbsp;веб-разработкой.
           </p>
-          <a href="/" className="landing-student__github-link">
+          <a
+            rel="noreferrer"
+            href="https://github.com/yaroslav-patrikeev"
+            target="_blank"
+            className="landing-student__github-link element-hover"
+          >
             GitHub
           </a>
         </div>
@@ -29,19 +37,34 @@ function LandingStudent() {
         <h3 className="landing-student__portfolio-title">Портфолио</h3>
         <ul className="landing-student__portfolio-list">
           <li>
-            <a className="landing-student__portfolio-item" href="/">
+            <a
+              rel="noreferrer"
+              target="_blank"
+              className="landing-student__portfolio-item element-hover"
+              href="https://github.com/yaroslav-patrikeev/how-to-learn"
+            >
               Статичный сайт
               <div className="landing-student__portfolio-item-image" />
             </a>
           </li>
           <li>
-            <a className="landing-student__portfolio-item" href="/">
+            <a
+              rel="noreferrer"
+              target="_blank"
+              className="landing-student__portfolio-item element-hover"
+              href="https://github.com/yaroslav-patrikeev/russian-travel"
+            >
               Адаптивный сайт
               <div className="landing-student__portfolio-item-image" />
             </a>
           </li>
           <li>
-            <a className="landing-student__portfolio-item" href="/">
+            <a
+              rel="noreferrer"
+              target="_blank"
+              className="landing-student__portfolio-item element-hover"
+              href="https://github.com/yaroslav-patrikeev/react-mesto-api-full-gha"
+            >
               Одностраничное приложение
               <div className="landing-student__portfolio-item-image" />
             </a>

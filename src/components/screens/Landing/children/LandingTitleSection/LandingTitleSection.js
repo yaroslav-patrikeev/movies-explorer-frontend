@@ -11,7 +11,9 @@ function LandingTitleSection() {
         <p className="landing-title-section__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <button className="landing-title-section__button">Узнать больше</button>
+        <button className="landing-title-section__button element-hover">
+          Узнать больше
+        </button>
       </div>
       <img
         src={logoImage}

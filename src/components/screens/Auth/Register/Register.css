@@ -42,3 +42,12 @@
 .register-form__label_last {
   margin-bottom: 123px;
 }
+
+@media (max-width: 767px) {
+  .register-form {
+    width: 260px;
+  }
+  .register-form__label_last {
+    margin-bottom: 216px;
+  }
+}

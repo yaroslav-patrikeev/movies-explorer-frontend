@@ -23,3 +23,17 @@
     margin-top: 232px;
   }
 }
+
+@media (max-width: 767px) {
+  .auth-header {
+    margin: 56px 30px 80px;
+    width: 260px;
+  }
+  .auth-header__logo {
+    margin: 0 auto;
+  }
+  .auth-header__greeting {
+    margin-top: 50px;
+    text-align: center;
+  }
+}

@@ -6,7 +6,7 @@ function HeaderNavigationLinks() {
     <nav className="header__navigation-links">
       <a
         href="/movies"
-        className={`header__link ${
+        className={`header__link element-hover ${
           currentPath === "/movies" && "header__link_accent"
         }`}
       >
@@ -14,7 +14,7 @@ function HeaderNavigationLinks() {
       </a>
       <a
         href="/saved-movies"
-        className={`header__link ${
+        className={`header__link element-hover ${
           currentPath === "/saved-movies" && "header__link_accent"
         }`}
       >

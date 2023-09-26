@@ -6,7 +6,10 @@ function AuthHeader({ greeting }) {
   return (
     <>
       <section className="auth-header">
-        <div className="auth-header__logo" onClick={() => navigate("/")}></div>
+        <div
+          className="auth-header__logo element-hover"
+          onClick={() => navigate("/")}
+        ></div>
         <p className="auth-header__greeting">{greeting}</p>
       </section>
     </>

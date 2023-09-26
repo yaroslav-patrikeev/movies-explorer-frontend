@@ -119,3 +119,57 @@
     margin-top: 87px;
   }
 }
+
+@media (max-width: 767px) {
+  .landing-student {
+    padding: 70px 14px 51px;
+  }
+  .landing-student__about {
+    margin: 60px 0 70px;
+    flex-direction: column-reverse;
+    row-gap: 40px;
+  }
+
+  .landing-student__photo {
+    width: 292px;
+    height: 392px;
+  }
+
+  .landing-student__name {
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+  }
+
+  .landing-student__short-description {
+    font-size: 11px;
+    line-height: 16px;
+    margin-top: 20px;
+  }
+
+  .landing-student__long-description {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .landing-student__github-link {
+    margin-top: 40px;
+  }
+  .landing-student__portfolio-title {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .landing-student__portfolio-item {
+    padding: 20px 0 19px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+
+  .landing-student__portfolio-item-image {
+    width: 18px;
+    height: 28px;
+  }
+}

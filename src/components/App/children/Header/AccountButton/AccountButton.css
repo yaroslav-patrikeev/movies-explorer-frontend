@@ -1,5 +1,6 @@
 .header__account-button {
   width: 100px;
+  font-family: inherit;
   height: 32px;
   border-radius: 40px;
   background-color: #2be080;

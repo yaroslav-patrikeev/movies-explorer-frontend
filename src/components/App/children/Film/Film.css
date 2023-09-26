@@ -68,3 +68,14 @@
     margin-top: 25px;
   }
 }
+
+@media (max-width: 767px) {
+  .film__image {
+    width: 300px;
+    height: 168px;
+  }
+  .film__button_delete {
+    opacity: 1;
+    background-image: url(../../../../images/cross.svg);
+  }
+}
