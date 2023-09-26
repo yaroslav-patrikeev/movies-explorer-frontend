@@ -1,4 +1,3 @@
-import arrow from "../../../../../images/link-arrow.svg";
 import photo from "../../../../../images/student-photo.jpg";
 import Title from "../../ui/Title/Title";
 import "./LandingStudent.css";
@@ -32,31 +31,19 @@ function LandingStudent() {
           <li>
             <a className="landing-student__portfolio-item" href="/">
               Статичный сайт
-              <img
-                src={arrow}
-                alt="arrow"
-                className="landing-student__portfolio-item-image"
-              />
+              <div className="landing-student__portfolio-item-image" />
             </a>
           </li>
           <li>
             <a className="landing-student__portfolio-item" href="/">
               Адаптивный сайт
-              <img
-                src={arrow}
-                alt="arrow"
-                className="landing-student__portfolio-item-image"
-              />
+              <div className="landing-student__portfolio-item-image" />
             </a>
           </li>
           <li>
             <a className="landing-student__portfolio-item" href="/">
               Одностраничное приложение
-              <img
-                src={arrow}
-                alt="arrow"
-                className="landing-student__portfolio-item-image"
-              />
+              <div className="landing-student__portfolio-item-image" />
             </a>
           </li>
         </ul>

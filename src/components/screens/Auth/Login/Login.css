@@ -1,0 +1,37 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 396px;
+  row-gap: 24px;
+}
+
+.login-form__label {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #a0a0a0;
+  row-gap: 5px;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 10px;
+}
+
+.login-form__input {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  border: 0;
+  outline: 0;
+}
+
+.login-form__label_last {
+  margin-bottom: 195px;
+}
+
+@media (max-width: 1300px) {
+  .login-form__label_last {
+    margin-bottom: 194px;
+  }
+}

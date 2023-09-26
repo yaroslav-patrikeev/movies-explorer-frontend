@@ -1,6 +1,9 @@
 .landing-tech {
   background-color: #f5f5f5;
-  padding: 70px 100px;
+  padding: 94px 70px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .landing-tech__title {
@@ -13,9 +16,10 @@
 
 .landing-tech__description {
   font-size: 14px;
+  width: 460px;
+  text-align: center;
   line-height: 20px;
   letter-spacing: -0.56px;
-  text-align: center;
   margin: 0;
 }
 
@@ -35,5 +39,31 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  font-size: 14px;
   background-color: #e8e8e8;
+}
+
+@media (max-width: 1300px) {
+  .landing-tech {
+    padding: 90px 50px;
+  }
+  .landing-tech__title {
+    margin: 80px 0 22px;
+  }
+  .landing-tech__description {
+    font-size: 12px;
+    max-width: 460px;
+    text-align: center;
+    margin: 0 auto;
+    letter-spacing: -0.48px;
+    line-height: 18px;
+  }
+  .landing-tech__list {
+    margin-top: 83px;
+  }
+  .landing-tech__list-item {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+  }
 }

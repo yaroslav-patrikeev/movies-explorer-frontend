@@ -1,9 +1,19 @@
 .header__navigation-links {
-	display: flex;
-	column-gap: 18px;
+  position: absolute;
+  top: 28px;
+  left: calc(50% - 107px);
+  display: flex;
+  column-gap: 16px;
+  width: 212px;
 }
 
-.header__navigation-link {
-	color: white;
-	text-decoration: none;
+.header__link {
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 18px;
+  color: black;
+}
+
+.header__link_accent {
+  font-weight: 500;
 }

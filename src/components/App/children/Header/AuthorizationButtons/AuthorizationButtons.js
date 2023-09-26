@@ -1,12 +1,24 @@
-import './AuthorizationButtons.css';
+import { useNavigate } from "react-router-dom";
+import "./AuthorizationButtons.css";
 
 function AuthorizationButtons() {
-	return (
-		<div className='header__authorization-buttons'>
-			<button className='header__registration-button'>Регистрация</button>
-			<button className='header__log-in-button'>Войти</button>
-		</div>
-	);
+  const navigate = useNavigate();
+  return (
+    <div className="header__authorization-buttons">
+      <button
+        className="header__registration-button"
+        onClick={() => navigate("/signup")}
+      >
+        Регистрация
+      </button>
+      <button
+        className="header__log-in-button"
+        onClick={() => navigate("/signin")}
+      >
+        Войти
+      </button>
+    </div>
+  );
 }
 
 export default AuthorizationButtons;

@@ -1,27 +1,38 @@
 .header__authorization-buttons {
-	display: flex;
-	column-gap: 30px;
+  display: flex;
+  column-gap: 30px;
+}
+
+@media (max-width: 767px) {
+  .header__authorization-buttons {
+    column-gap: 14px;
+  }
 }
 
 .header__registration-button {
-	border: 0;
-	outline: 0;
-	color: white;
-	background-color: transparent;
-	cursor: pointer;
-	font-size: 12px;
-	line-height: 16px;
-	font-weight: 500;
+  width: 77px;
+  border: 0;
+  outline: 0;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  padding: 0;
+  letter-spacing: 0.8px;
 }
 
 .header__log-in-button {
-	padding: 8px 20px;
-	background-color: #2be080;
-	border: 0;
-	outline: 0;
-	border-radius: 3px;
-	font-size: 12px;
-	line-height: 16px;
-	font-weight: 500;
-	cursor: pointer;
+  width: 76px;
+  height: 32px;
+  padding: 0;
+  background-color: #2be080;
+  border: 0;
+  outline: 0;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  cursor: pointer;
 }

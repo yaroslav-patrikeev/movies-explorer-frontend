@@ -1,0 +1,62 @@
+@keyframes menu {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 520px;
+  }
+}
+
+.mobile-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  right: 0;
+  width: 520px;
+  height: 1024px;
+  animation: menu 1s ease;
+  background-color: white;
+  z-index: 1;
+}
+
+.mobile-menu__exit {
+  background-image: url(../../../../images/cross.svg);
+  width: 22px;
+  height: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 22.44px;
+  right: 22.44px;
+  cursor: pointer;
+}
+
+.mobile-menu__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 22px;
+  padding: 0;
+  margin: 159px 0 615px;
+  width: 340px;
+}
+
+.mobile-menu__link {
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 4px;
+}
+
+.mobile-menu__link_active {
+  border-bottom: 2px solid black;
+}

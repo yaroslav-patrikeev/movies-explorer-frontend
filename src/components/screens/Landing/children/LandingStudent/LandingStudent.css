@@ -22,6 +22,8 @@
 .landing-student__long-description {
   line-height: 22px;
   margin: 0;
+  font-size: 14px;
+  line-height: 22px;
 }
 
 .landing-student__name {
@@ -44,6 +46,7 @@
   color: black;
   text-decoration: none;
   margin: 100px 0 0;
+  font-size: 14px;
 }
 
 .landing-student__portfolio-title {
@@ -74,4 +77,45 @@
 .landing-student__portfolio-item-image {
   width: 29px;
   height: 60px;
+  background-image: url("../../../../../images/link-arrow.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1300px) {
+  .landing-student {
+    padding: 90px 50px 71px;
+  }
+  .landing-student__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .landing-student__description {
+    max-width: 364px;
+  }
+  .landing-student__short-description {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 16px 0 20px;
+  }
+  .landing-student__long-description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .landing-student__photo {
+    width: 255px;
+    height: 307px;
+  }
+  .landing-student__about {
+    margin: 66px 0 91px;
+  }
+  .landing-student__portfolio-item {
+    font-size: 28px;
+  }
+  .landing-student__portfolio-item-image {
+    width: 27px;
+  }
+  .landing-student__github-link {
+    margin-top: 87px;
+  }
 }

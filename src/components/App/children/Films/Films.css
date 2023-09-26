@@ -1,0 +1,17 @@
+.films {
+  padding: 70px 70px 0;
+  display: grid;
+  box-sizing: border-box;
+  max-width: 1280px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 38px 20px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1300px) {
+  .films {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 70px 30px 10px;
+    margin: 0;
+  }
+}
