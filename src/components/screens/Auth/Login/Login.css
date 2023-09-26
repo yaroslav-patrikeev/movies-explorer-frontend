@@ -7,6 +7,7 @@
 }
 
 .login-form__label {
+  position: relative;
   display: flex;
   flex-direction: column;
   font-size: 10px;
@@ -24,6 +25,19 @@
   font-weight: 500;
   border: 0;
   outline: 0;
+}
+
+.login-form__error {
+  position: absolute;
+  top: 52.8px;
+  color: red;
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.login-form__input_error {
+  color: red;
+  caret-color: black;
 }
 
 .login-form__label_last {
