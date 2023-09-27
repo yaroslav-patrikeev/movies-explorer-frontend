@@ -95,7 +95,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
   .search {
     padding: 80px 30px 61px;
   }

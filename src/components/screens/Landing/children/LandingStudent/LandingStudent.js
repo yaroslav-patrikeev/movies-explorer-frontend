@@ -13,14 +13,11 @@ function LandingStudent() {
             Фронтенд-разработчик, 24 года
           </p>
           <p className="landing-student__long-description">
-            Я&nbsp;родился в&nbsp;Коломне, сейчас живу в&nbsp;Москве. Закончил
-            факультет мировой музыкальной культуры Академии им. Маймонида.
-            По&nbsp;профессии эстрадно-джазовый певец. После вуза начал работать
-            педагогом по вокалу. Программирование стало интересным увлечением,
-            возможностью переключаться. Пройдя путь обучения в&nbsp;Яндекс
-            Практикуме я&nbsp;многое переосмыслил. Понял, что хочу приносить
-            пользу людям, упрощая их жизнь, поэтому собираюсь связать свою жизнь
-            с&nbsp;веб-разработкой.
+            Я&nbsp;родился в&nbsp;Коломне, живу в&nbsp;Москве. Программирование
+            было интересным увлечением, возможностью переключаться. Пройдя путь
+            обучения в&nbsp;Яндекс Практикуме я&nbsp;многое переосмыслил. Понял,
+            что хочу приносить пользу людям, упрощая их жизнь, поэтому собираюсь
+            связать свою жизнь с&nbsp;веб-разработкой.
           </p>
           <a
             rel="noreferrer"
@@ -28,7 +25,7 @@ function LandingStudent() {
             target="_blank"
             className="landing-student__github-link element-hover"
           >
-            GitHub
+            Github
           </a>
         </div>
         <img src={photo} className="landing-student__photo" alt="student" />
@@ -62,7 +59,7 @@ function LandingStudent() {
             <a
               rel="noreferrer"
               target="_blank"
-              className="landing-student__portfolio-item element-hover"
+              className="landing-student__portfolio-item landing-student__portfolio-item_last element-hover"
               href="https://github.com/yaroslav-patrikeev/react-mesto-api-full-gha"
             >
               Одностраничное приложение

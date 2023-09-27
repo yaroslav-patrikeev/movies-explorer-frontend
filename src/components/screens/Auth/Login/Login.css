@@ -44,7 +44,7 @@
   margin-bottom: 195px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
   .login-form__label_last {
     margin-bottom: 194px;
   }

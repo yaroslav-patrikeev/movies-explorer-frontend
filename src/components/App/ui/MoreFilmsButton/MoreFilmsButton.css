@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
   .more-films-button {
     margin: 50px 224px 80px;
   }

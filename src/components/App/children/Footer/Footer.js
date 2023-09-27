@@ -25,7 +25,7 @@ function Footer() {
             className="footer__link element-hover"
             href="https://github.com/yaroslav-patrikeev"
           >
-            GitHub
+            Github
           </a>
         </li>
       </ul>

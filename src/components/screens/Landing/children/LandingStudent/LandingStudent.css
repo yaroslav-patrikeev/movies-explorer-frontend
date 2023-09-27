@@ -74,6 +74,10 @@
   padding: 20px 0 9px;
 }
 
+.landing-student__portfolio-item_last {
+  border: 0;
+}
+
 .landing-student__portfolio-item-image {
   width: 29px;
   height: 60px;
@@ -82,7 +86,7 @@
   background-repeat: no-repeat;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
   .landing-student {
     padding: 90px 50px 71px;
   }
@@ -132,7 +136,7 @@
 
   .landing-student__photo {
     width: 292px;
-    height: 392px;
+    height: 352px;
   }
 
   .landing-student__name {
@@ -171,5 +175,6 @@
   .landing-student__portfolio-item-image {
     width: 18px;
     height: 28px;
+    background-image: url("../../../../../images/link-arrow-mobile.svg");
   }
 }

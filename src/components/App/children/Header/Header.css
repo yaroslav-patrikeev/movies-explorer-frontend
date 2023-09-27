@@ -8,7 +8,7 @@
   min-height: 74px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
   .header {
     padding: 0 30px;
   }

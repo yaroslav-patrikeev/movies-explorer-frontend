@@ -39,7 +39,7 @@ function MobileMenu({ isMenu, setIsMenu }) {
               currentPath === "/saved-movies" && "mobile-menu__link_active"
             }`}
           >
-            Сохраненные фильмы
+            Сохранённые фильмы
           </Link>
         </li>
       </ul>

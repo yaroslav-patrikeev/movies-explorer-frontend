@@ -30,7 +30,7 @@
   line-height: 17px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
   .auth-footer__text {
     margin-bottom: 232px;
   }

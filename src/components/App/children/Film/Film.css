@@ -59,7 +59,7 @@
   line-height: 13px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1279px) {
   .film__image {
     width: 339px;
     height: 190px;
