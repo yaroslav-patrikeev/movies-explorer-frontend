@@ -1,12 +1,18 @@
-.landing-title-section {
-  padding: 75px 70px;
+.landing-title {
+  background-color: #073042;
+  display: flex;
+  justify-content: center;
+}
+
+.landing-title__content {
+  padding: 75px 0;
   box-sizing: border-box;
   display: grid;
-  background-color: #073042;
+  width: 1140px;
   grid-template-columns: repeat(2, 1fr);
 }
 
-.landing-title-section__title {
+.landing-title__title {
   width: 640px;
   color: #ffffff;
   font-size: 50px;
@@ -15,7 +21,7 @@
   margin: 0 0 36px;
 }
 
-.landing-title-section__subtitle {
+.landing-title__subtitle {
   max-width: 310px;
   opacity: 50%;
   color: #ffffff;
@@ -25,13 +31,13 @@
   margin: 0 0 146px;
 }
 
-.landing-title-section__image {
+.landing-title__image {
   width: 310px;
   height: 304px;
   justify-self: flex-end;
 }
 
-.landing-title-section__button {
+.landing-title__button {
   font-family: inherit;
   padding: 10px 20px;
   font-size: 12px;
@@ -45,27 +51,28 @@
 }
 
 @media (max-width: 1279px) {
-  .landing-title-section {
-    padding: 140px 44px 76px;
+  .landing-title__content {
+    padding: 140px 0px 76px;
     grid-template-columns: 1fr;
+    width: 708px;
   }
-  .landing-title-section__image {
+  .landing-title__image {
     grid-row-start: 1;
     justify-self: center;
     margin-bottom: 48px;
   }
-  .landing-title-section__content {
+  .landing-title__text {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .landing-title-section__title {
+  .landing-title__title {
     font-size: 40px;
     line-height: 50px;
     text-align: center;
     margin-bottom: 22px;
   }
-  .landing-title-section__subtitle {
+  .landing-title__subtitle {
     text-align: center;
     margin-bottom: 92px;
     max-width: 260px;
@@ -73,15 +80,16 @@
 }
 
 @media (max-width: 767px) {
-  .landing-title-section__image {
+  .landing-title__image {
     width: 210px;
     height: 206px;
     margin-bottom: 44px;
   }
-  .landing-title-section {
-    padding: 70px 10px 30px;
+  .landing-title__content {
+    padding: 70px 0 30px;
+    width: 292px;
   }
-  .landing-title-section__title {
+  .landing-title__title {
     font-size: 30px;
     line-height: 38px;
     letter-spacing: -1.2px;
@@ -89,7 +97,7 @@
     margin-bottom: 24px;
   }
 
-  .landing-title-section__subtitle {
+  .landing-title__subtitle {
     margin-bottom: 80px;
   }
 }

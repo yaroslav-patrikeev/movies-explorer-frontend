@@ -1,14 +1,19 @@
-.profile-content {
+.profile {
+  display: flex;
+  justify-content: center;
+}
+
+.profile__content {
   align-self: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 410px;
+  width: 410px;
   font-size: 11px;
   line-height: 14px;
 }
 
-.profile-content__greetings {
+.profile__greetings {
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
@@ -16,7 +21,7 @@
   margin: 74px 0 123px;
 }
 
-.profile-content__name {
+.profile__name {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #e8e8e8;
@@ -24,16 +29,16 @@
   margin-bottom: 17px;
 }
 
-.profile-content__email {
+.profile__email {
   display: flex;
   justify-content: space-between;
 }
 
-.profile-content__key {
+.profile__key {
   font-weight: 500;
 }
 
-.profile-content__edit-button {
+.profile__edit-button {
   line-height: 16px;
   font-size: 13px;
   border: 0;
@@ -44,7 +49,7 @@
   padding: 0;
 }
 
-.profile-content__logout-button {
+.profile__logout-button {
   padding: 0;
   line-height: 16px;
   font-size: 13px;
@@ -55,7 +60,8 @@
   color: #ff3055;
 }
 
-.profile-content__input {
+.profile__input {
+  width: 80%;
   border: 0;
   outline: 0;
   font-size: 11px;
@@ -65,7 +71,11 @@
   background-color: white;
 }
 
-.profile-content__save {
+.profile__input:focus {
+  background-color: #e8e8e8;
+}
+
+.profile__save {
   font-family: inherit;
   border: 0;
   outline: 0;
@@ -80,7 +90,7 @@
   margin: 223px 0 50px;
 }
 
-.profile-content__save-error {
+.profile__save-error {
   position: absolute;
   bottom: 149px;
   left: 0;
@@ -92,31 +102,31 @@
 }
 
 @media (max-width: 1279px) {
-  .profile-content__greetings {
+  .profile__greetings {
     margin: 236px 0 96px;
   }
-  .profile-content__edit-button {
+  .profile__edit-button {
     margin-top: 210px;
   }
 }
 
 @media (max-width: 767px) {
-  .profile-content {
-    min-width: 260px;
+  .profile__content {
+    width: 260px;
   }
 
-  .profile-content__greetings {
+  .profile__greetings {
     margin: 70px 0 80px;
   }
-  .profile-content__name {
+  .profile__name {
     padding-bottom: 16px;
   }
-  .profile-content__edit-button {
+  .profile__edit-button {
     font-family: inherit;
     margin-top: 379px;
     font-size: 12px;
   }
-  .profile-content__logout-button {
+  .profile__logout-button {
     font-size: 12px;
     font-family: inherit;
   }

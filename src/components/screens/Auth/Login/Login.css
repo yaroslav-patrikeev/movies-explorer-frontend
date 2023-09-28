@@ -1,5 +1,10 @@
 .login-form {
   display: flex;
+  justify-content: center;
+}
+
+.login-form__content {
+  display: flex;
   flex-direction: column;
   align-self: center;
   width: 396px;
@@ -15,8 +20,6 @@
   font-weight: 400;
   color: #a0a0a0;
   row-gap: 5px;
-  border-bottom: 1px solid #e8e8e8;
-  padding-bottom: 10px;
 }
 
 .login-form__input {
@@ -25,6 +28,12 @@
   font-weight: 500;
   border: 0;
   outline: 0;
+  border-bottom: 1px solid #e8e8e8;
+  padding-bottom: 10px;
+}
+
+.login-form__input:focus {
+  border-color: #3456f3;
 }
 
 .login-form__error {
@@ -51,7 +60,7 @@
 }
 
 @media (max-width: 767px) {
-  .login-form {
+  .login-form__content {
     width: 260px;
   }
   .login-form__label_last {

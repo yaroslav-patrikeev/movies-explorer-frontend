@@ -6,12 +6,14 @@ function AuthorizationButtons() {
   return (
     <div className="header__authorization-buttons">
       <button
+        type="button"
         className="header__registration-button element-hover"
         onClick={() => navigate("/signup")}
       >
         Регистрация
       </button>
       <button
+        type="button"
         className="header__log-in-button element-hover"
         onClick={() => navigate("/signin")}
       >

@@ -5,7 +5,9 @@ function Profile() {
   return (
     <>
       <Header theme="light" authorized={true} />
-      <ProfileContent />
+      <main className="main">
+        <ProfileContent />
+      </main>
     </>
   );
 }

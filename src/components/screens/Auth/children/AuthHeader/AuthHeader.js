@@ -5,13 +5,13 @@ function AuthHeader({ greeting }) {
   const navigate = useNavigate();
   return (
     <>
-      <section className="auth-header">
+      <header className="auth-header">
         <div
           className="auth-header__logo element-hover"
           onClick={() => navigate("/")}
         ></div>
-        <p className="auth-header__greeting">{greeting}</p>
-      </section>
+        <h1 className="auth-header__greeting">{greeting}</h1>
+      </header>
     </>
   );
 }

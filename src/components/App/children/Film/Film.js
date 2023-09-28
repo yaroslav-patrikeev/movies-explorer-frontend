@@ -11,7 +11,7 @@ function Film({ type }) {
   return (
     <article className="film">
       <img src={filmImg} alt="" className="film__image" />
-      <p className="film__title">33 слова о дизайне</p>
+      <h2 className="film__title">33 слова о дизайне</h2>
       {type === "saved" ? (
         <div className="film__button film__button_delete"></div>
       ) : (

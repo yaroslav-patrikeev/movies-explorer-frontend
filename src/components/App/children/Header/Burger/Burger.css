@@ -17,5 +17,10 @@
   .burger {
     width: 40px;
     height: 43px;
+    background-image: url(../../../../../images/burger-mobile.svg);
+  }
+
+  .burger_black {
+    background-image: url(../../../../../images/burger-black-mobile.svg);
   }
 }

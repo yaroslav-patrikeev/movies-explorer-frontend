@@ -3,16 +3,15 @@ import "./Films.css";
 
 function Films({ type }) {
   return (
-    <section className="films">
-      <Film type={type} />
-      <Film type={type} />
-      <Film type={type} />
-      <Film type={type} />
-      <Film type={type} />
-      <Film type={type} />
-      <Film type={type} />
-      <Film type={type} />
-    </section>
+    <div className="films">
+      <div className="films__content">
+        <Film type={type} />
+        <Film type={type} />
+        <Film type={type} />
+        <Film type={type} />
+        <Film type={type} />
+      </div>
+    </div>
   );
 }
 

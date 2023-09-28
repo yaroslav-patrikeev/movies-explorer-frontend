@@ -1,5 +1,10 @@
 .landing-student {
-  padding: 110px 70px;
+  display: flex;
+  justify-content: center;
+}
+.landing-student__content {
+  padding: 110px 0;
+  width: 1140px;
 }
 
 .landing-student__about {
@@ -87,8 +92,9 @@
 }
 
 @media (max-width: 1279px) {
-  .landing-student {
+  .landing-student__content {
     padding: 90px 50px 71px;
+    width: 708px;
   }
   .landing-student__name {
     font-size: 40px;
@@ -125,8 +131,9 @@
 }
 
 @media (max-width: 767px) {
-  .landing-student {
-    padding: 70px 14px 51px;
+  .landing-student__content {
+    padding: 70px 0 51px;
+    width: 292px;
   }
   .landing-student__about {
     margin: 60px 0 70px;

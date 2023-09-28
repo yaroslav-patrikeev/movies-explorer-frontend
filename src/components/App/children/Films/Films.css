@@ -1,25 +1,33 @@
 .films {
-  padding: 70px 70px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.films__content {
+  padding-top: 73px;
   display: grid;
   box-sizing: border-box;
-  max-width: 1280px;
+  width: 1140px;
   grid-template-columns: repeat(4, 1fr);
   gap: 38px 20px;
   margin: 0 auto;
 }
 
 @media (max-width: 1279px) {
-  .films {
+  .films__content {
     grid-template-columns: repeat(2, 1fr);
-    padding: 70px 30px 10px;
+    gap: 30px;
+    padding: 73px 0 14px;
+    width: 708px;
     margin: 0;
   }
 }
 
 @media (max-width: 767px) {
-  .films {
+  .films__content {
+    width: 300px;
     grid-template-columns: 1fr;
-    padding: 40px 10px 10px;
+    padding: 40px 0 10px;
     row-gap: 34px;
   }
 }

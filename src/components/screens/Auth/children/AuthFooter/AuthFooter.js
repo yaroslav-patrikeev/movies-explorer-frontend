@@ -3,8 +3,8 @@ import "./AuthFooter.css";
 
 function AuthFooter({ buttonText }) {
   return (
-    <section className="auth-footer">
-      <button className="auth-footer__button element-hover">
+    <div className="auth-footer">
+      <button type="button" className="auth-footer__button element-hover">
         {buttonText}
       </button>
       <p className="auth-footer__text">
@@ -18,7 +18,7 @@ function AuthFooter({ buttonText }) {
           {buttonText === "Войти" ? "Регистрация" : "Войти"}
         </Link>
       </p>
-    </section>
+    </div>
   );
 }
 

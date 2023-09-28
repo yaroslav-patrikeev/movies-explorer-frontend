@@ -6,8 +6,9 @@ function MobileMenu({ isMenu, setIsMenu }) {
   const currentPath = window.location.pathname;
 
   return (
-    <nav className={`mobile-menu ${isMenu && "mobile-menu_opened"}`}>
+    <nav className={`mobile-menu ${isMenu ? "mobile-menu_opened" : ""}`}>
       <button
+        type="button"
         className="mobile-menu__exit"
         onClick={() => setIsMenu(false)}
       ></button>

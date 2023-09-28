@@ -10,17 +10,15 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="content-container">
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/movies" element={<Movies />} />
+      <Route path="/saved-movies" element={<SavedMovies />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/signin" element={<Login />} />
+      <Route path="/signup" element={<Register />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

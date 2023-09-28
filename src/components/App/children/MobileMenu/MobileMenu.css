@@ -1,17 +1,17 @@
 .mobile-menu {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   top: 0;
-  right: 0;
+  right: -14px;
   width: 0px;
   height: 1024px;
   background-color: white;
-  z-index: 1;
   opacity: 0;
   transition: all 0.5s ease;
   overflow: hidden;
+  z-index: 2;
 }
 
 .mobile-menu_opened {
@@ -61,7 +61,7 @@
 
 @media (max-width: 767px) {
   .mobile-menu {
-    height: 780px;
+    height: 100%;
   }
   .mobile-menu_opened {
     width: 320px;
