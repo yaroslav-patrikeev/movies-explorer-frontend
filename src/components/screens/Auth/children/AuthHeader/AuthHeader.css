@@ -1,0 +1,39 @@
+.auth-header {
+  width: 396px;
+  align-self: center;
+  margin: 70px 0 40px;
+}
+
+.auth-header__logo {
+  background-image: url(../../../../../images/logo.svg);
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+}
+
+.auth-header__greeting {
+  margin: 40px 0 0;
+  font-size: 24px;
+  line-height: 29px;
+  font-weight: 500;
+}
+
+@media (max-width: 1279px) {
+  .auth-header {
+    margin-top: 232px;
+  }
+}
+
+@media (max-width: 767px) {
+  .auth-header {
+    margin: 56px 30px 80px;
+    width: 260px;
+  }
+  .auth-header__logo {
+    margin: 0 auto;
+  }
+  .auth-header__greeting {
+    margin-top: 50px;
+    text-align: center;
+  }
+}

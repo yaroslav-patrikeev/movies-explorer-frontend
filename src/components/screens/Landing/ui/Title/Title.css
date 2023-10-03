@@ -1,0 +1,17 @@
+.title {
+  margin: 0;
+  padding: 0 0 23px;
+  border-bottom: 1px solid #000000;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: -0.88px;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 18px;
+    padding-bottom: 28px;
+    letter-spacing: -0.72px;
+  }
+}

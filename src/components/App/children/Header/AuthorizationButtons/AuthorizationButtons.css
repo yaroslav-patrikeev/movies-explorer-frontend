@@ -1,0 +1,49 @@
+.header__authorization-buttons {
+  display: flex;
+  column-gap: 30px;
+}
+
+.header__registration-button {
+  font-family: inherit;
+  width: 77px;
+  border: 0;
+  outline: 0;
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  padding: 0;
+}
+
+.header__log-in-button {
+  font-family: "Inter", sans-serif;
+  width: 76px;
+  height: 32px;
+  padding: 0;
+  background-color: #2be080;
+  border: 0;
+  outline: 0;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .header__authorization-buttons {
+    column-gap: 14px;
+  }
+  .header__log-in-button {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+  }
+  .header__registration-button {
+    width: 64px;
+    font-size: 10px;
+    letter-spacing: normal;
+  }
+}

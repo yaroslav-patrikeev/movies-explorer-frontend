@@ -1,0 +1,36 @@
+@import url("../../vendor/fonts/inter.css");
+
+body {
+  margin: 0;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter", Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.main {
+  width: 100%;
+}
+
+.element-hover {
+  transition: opacity 0.3s;
+}
+.element-hover:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 1279px) {
+  .content-container {
+    min-width: 768px;
+  }
+}
+
+@media (max-width: 767px) {
+  .content-container {
+    min-width: 320px;
+  }
+}

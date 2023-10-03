@@ -1,0 +1,80 @@
+.mobile-menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  right: -14px;
+  width: 0px;
+  height: 1024px;
+  background-color: white;
+  opacity: 0;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.mobile-menu_opened {
+  width: 520px;
+  opacity: 1;
+}
+
+.mobile-menu__exit {
+  background-image: url(../../../../images/cross.svg);
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  cursor: pointer;
+}
+
+.mobile-menu__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 28px;
+  padding: 0;
+  margin: 159px 0 622px;
+  width: 100%;
+}
+
+.mobile-menu__link {
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 4px;
+}
+
+.mobile-menu__link_active {
+  border-bottom: 2px solid black;
+}
+
+@media (max-width: 767px) {
+  .mobile-menu {
+    height: 100%;
+  }
+  .mobile-menu_opened {
+    width: 320px;
+  }
+  .mobile-menu__exit {
+    top: 19px;
+    right: 19px;
+  }
+  .mobile-menu__list {
+    margin: 144px 10px 445px;
+    row-gap: 24px;
+  }
+  .mobile-menu__link {
+    padding-bottom: 8px;
+  }
+}
