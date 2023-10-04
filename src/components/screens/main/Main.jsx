@@ -13,6 +13,7 @@ function Main() {
 	const handleClickToLearnMore = () => {
 		ref.current?.scrollIntoView({ behavior: 'smooth' });
 	};
+
 	return (
 		<Layout>
 			<main>
