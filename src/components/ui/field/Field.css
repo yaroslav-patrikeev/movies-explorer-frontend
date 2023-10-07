@@ -30,3 +30,12 @@
 	font-size: 10px;
 	font-weight: 400;
 }
+
+.field__input_error {
+	color: red;
+	caret-color: black;
+}
+
+.field_last {
+	margin-bottom: 123px;
+}

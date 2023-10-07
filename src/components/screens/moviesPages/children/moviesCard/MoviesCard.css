@@ -4,11 +4,14 @@
 	row-gap: 10px;
 }
 
+.movies-card__link {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
 .movies-card__image {
 	width: 270px;
 	height: 151px;
-	grid-column-start: 1;
-	grid-column-end: 3;
 }
 
 .movies-card__title {

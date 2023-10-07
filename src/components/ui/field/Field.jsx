@@ -1,9 +1,11 @@
-const Field = ({ register, name, type, error, options, ...rest }) => {
+import './Field.css';
+
+const Field = ({ register, name, error, options, text, ...rest }) => {
 	return (
 		<label className='field'>
+			{text}
 			<input
-				className='field__input'
-				name={name}
+				className={`field__input ${(error && 'field__input_error') || ''}`}
 				{...register(name, options)}
 				{...rest}
 			/>

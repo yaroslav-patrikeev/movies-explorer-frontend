@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useWindowSize } from '@uidotdev/usehooks';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Header.css';
@@ -9,23 +10,11 @@ import HeaderNavigationLinks from './headerNavigationLinks/HeaderNavigationLinks
 import MobileMenu from './mobileMenu/MobileMenu';
 
 function Header({ theme = 'dark', authorized = false }) {
-	const [isMobile, setIsMobile] = useState(false);
 	const [isMenu, setIsMenu] = useState(false);
 
 	const navigation = useNavigate();
-
-	useEffect(() => {
-		window.innerWidth < 1280 && setIsMobile(true);
-		const resize = () => {
-			if (window.innerWidth < 1280) return setIsMobile(true);
-			setIsMobile(false);
-			setIsMenu(false);
-		};
-		window.addEventListener('resize', resize);
-		return () => {
-			window.removeEventListener('resize', resize);
-		};
-	}, []);
+	const size = useWindowSize();
+	const isMobile = size.width < 1280;
 
 	const elementsView = () => {
 		if (authorized && !isMobile) {
