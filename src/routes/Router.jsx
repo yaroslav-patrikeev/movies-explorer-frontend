@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Login from '../components/screens/auth/login/Login';
-import Register from '../components/screens/auth/register/Register';
+import Login from '../components/screens/Auth/Login/Login';
+import Register from '../components/screens/Auth/Register/Register';
 import Main from '../components/screens/main/Main';
 import Movies from '../components/screens/moviesPages/movies/Movies';
 import SavedMovies from '../components/screens/moviesPages/savedMovies/SavedMovies';
-import NotFound from '../components/screens/notFound/NotFound';
+import NotFound from '../components/screens/NotFound/NotFound';
 import Profile from '../components/screens/profile/Profile';
 
 const Router = () => {

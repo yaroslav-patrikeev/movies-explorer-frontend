@@ -42,6 +42,7 @@ function Movies() {
 					foundMovies={foundMovies}
 					quantityCards={quantityCards}
 				/>
+				
 				{quantityCards?.cards < foundMovies?.length && (
 					<MoreFilmsButton
 						quantityCards={quantityCards}

@@ -30,6 +30,12 @@ class MainApi {
 			await this.login({ email, password });
 		}
 	}
+
+	async saveMovie(movie) {
+		await this.axios.post('/movies', {
+			...movie
+		})
+	}
 }
 
 export default new MainApi();

@@ -1,12 +1,17 @@
+import MainApi from '../../../../../utils/MainApi';
 import './MoviesCard.css';
 
-function MoviesCard({ type, title, image, trailerLink, duration }) {
+function MoviesCard({type, film}) {
 	const handleLikeClick = evt => {
 		const element = evt.target;
-		if (element.classList.contains('movies-card__button_like_passive')) {
-			evt.target.classList.toggle('movies-card__button_like_active');
-		}
+		MainApi.saveMovie(film).then(() => {
+			if (element.classList.contains('movies-card__button_like_passive')) {
+				evt.target.classList.toggle('movies-card__button_like_active');
+			}
+		}).catch(console.error)
 	};
+
+	console.log(film)
 
 	const getTimeFromMins = mins => {
 		let hours = Math.trunc(mins / 60);
@@ -16,14 +21,16 @@ function MoviesCard({ type, title, image, trailerLink, duration }) {
 
 	return (
 		<article className='movies-card'>
-			<a href={trailerLink} className='movies-card__link' target='_blanc'>
+			<a href={film.trailerLink} className='movies-card__link' target='_blanc'>
 				<img
-					src={`https://api.nomoreparties.co/${image}`}
-					alt={title}
+					src={`https://api.nomoreparties.co/${film.image.url}`}
+					alt={film.nameRU
+					}
 					className='movies-card__image'
 				/>
 			</a>
-			<h2 className='movies-card__title'>{title}</h2>
+			<h2 className='movies-card__title'>{film.nameRU
+}</h2>
 
 			{type === 'saved' ? (
 				<div className='movies-card__button movies-card__button_delete'></div>
@@ -33,7 +40,7 @@ function MoviesCard({ type, title, image, trailerLink, duration }) {
 					onClick={handleLikeClick}
 				></div>
 			)}
-			<p className='movies-card__time'>{getTimeFromMins(duration)}</p>
+			<p className='movies-card__time'>{getTimeFromMins(film.duration)}</p>
 		</article>
 	);
 }

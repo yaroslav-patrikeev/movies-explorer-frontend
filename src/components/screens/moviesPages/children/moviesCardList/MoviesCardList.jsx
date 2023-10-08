@@ -9,12 +9,10 @@ function MoviesCardList({ type, foundMovies, quantityCards }) {
 				{foundMovies?.slice(0, quantityCards.cards).map(movie => (
 					<MoviesCard
 						type={type}
-						title={movie.nameRU}
-						image={movie.image.url}
-						trailerLink={movie.trailerLink}
-						duration={movie.duration}
+						film={movie}
 						key={movie.id}
 					/>
+					
 				))}
 			</div>
 		</div>
