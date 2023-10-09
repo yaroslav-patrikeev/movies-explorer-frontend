@@ -1,17 +1,14 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import Field from '../../../ui/field/Field';
 import ModalError from '../../../ui/modalError/ModalError';
 
-import MainApi from '../../../../utils/MainApi';
 import AuthFooter from '../children/AuthFooter/AuthFooter';
 import AuthHeader from '../children/AuthHeader/AuthHeader';
 
 import './Login.css';
 
-function Login() {
-	const [errorText, setErrorText] = useState('');
+function Login({ handleLogin, errorText }) {
 	const {
 		register,
 		handleSubmit,
@@ -19,15 +16,6 @@ function Login() {
 	} = useForm({
 		mode: 'onChange',
 	});
-
-	const onSubmit = async data => {
-		await MainApi.login(data).catch(error => {
-			setErrorText(error.response.data.message);
-			setTimeout(() => {
-				setErrorText('');
-			}, 2000);
-		});
-	};
 
 	return (
 		<>
@@ -37,7 +25,7 @@ function Login() {
 				<div className='login-form'>
 					<form
 						className='login-form__content'
-						onSubmit={handleSubmit(onSubmit)}
+						onSubmit={handleSubmit(handleLogin)}
 					>
 						<Field
 							register={register}

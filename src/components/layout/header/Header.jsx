@@ -9,24 +9,23 @@ import Burger from './burger/Burger';
 import HeaderNavigationLinks from './headerNavigationLinks/HeaderNavigationLinks';
 import MobileMenu from './mobileMenu/MobileMenu';
 
-function Header({ theme = 'dark', authorized = false }) {
+function Header({ theme = 'dark', isLoggedIn = false }) {
 	const [isMenu, setIsMenu] = useState(false);
-
 	const navigation = useNavigate();
 	const size = useWindowSize();
 	const isMobile = size.width < 1280;
 
 	const elementsView = () => {
-		if (authorized && !isMobile) {
+		if (isLoggedIn && !isMobile) {
 			return (
 				<>
-					<HeaderNavigationLinks />
+					<HeaderNavigationLinks theme={theme} />
 					<AccountButton theme={theme} />
 				</>
 			);
 		}
-		if (!authorized) return <AuthorizationButtons />;
-		if (authorized && isMobile) return <Burger setIsMenu={setIsMenu} />;
+		if (!isLoggedIn) return <AuthorizationButtons />;
+		if (isLoggedIn && isMobile) return <Burger setIsMenu={setIsMenu} />;
 	};
 	return (
 		<header className={`header header_${theme} `}>

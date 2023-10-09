@@ -1,17 +1,18 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import Field from '../../../ui/field/Field';
 import ModalError from '../../../ui/modalError/ModalError';
 
-import MainApi from '../../../../utils/MainApi';
+import {
+	emailRegExp,
+	nameRegExp,
+} from '../../../../constants/regexp.constants';
 import AuthFooter from '../children/AuthFooter/AuthFooter';
 import AuthHeader from '../children/AuthHeader/AuthHeader';
 
 import './Register.css';
 
-function Register() {
+function Register({ errorText, handleRegister }) {
 	const {
 		register,
 		handleSubmit,
@@ -19,20 +20,6 @@ function Register() {
 	} = useForm({
 		mode: 'onChange',
 	});
-
-	const navigator = useNavigate();
-	const [errorText, setErrorText] = useState('');
-
-	const onSubmit = data => {
-		MainApi.register(data)
-			.then(() => navigator('/movies'))
-			.catch(error => {
-				setErrorText(error.response.data.message);
-				setTimeout(() => {
-					setErrorText('');
-				}, 2000);
-			});
-	};
 	return (
 		<>
 			<ModalError text={errorText} />
@@ -41,7 +28,7 @@ function Register() {
 				<div className='register-form'>
 					<form
 						className='register-form__content'
-						onSubmit={handleSubmit(onSubmit)}
+						onSubmit={handleSubmit(handleRegister)}
 					>
 						<Field
 							register={register}
@@ -57,6 +44,10 @@ function Register() {
 									value: 40,
 									message: 'Максимальная длина имени - 40 символов!',
 								},
+								pattern: {
+									value: nameRegExp,
+									message: 'Некорректное имя!',
+								},
 							}}
 							placeholder='Как вас зовут?'
 							text='Имя'
@@ -68,6 +59,10 @@ function Register() {
 							error={errors?.email?.message}
 							options={{
 								required: 'Это обязательное поле!',
+								pattern: {
+									value: emailRegExp,
+									message: 'Некорректный email!',
+								},
 							}}
 							placeholder='Ваш E-mail'
 							text='E-mail'

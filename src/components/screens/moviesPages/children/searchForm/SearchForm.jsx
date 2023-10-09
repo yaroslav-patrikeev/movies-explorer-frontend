@@ -1,20 +1,10 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import ModalError from '../../../../ui/modalError/ModalError';
 
-import MoviesApi from '../../../../../utils/MoviesApi';
-
 import './SearchForm.css';
 
-function SearchForm({
-	setFoundMovies,
-	setIsLoading,
-	setQuantityCards,
-	quantityCards,
-	calculateQuantityInitialCards,
-	lastSearch,
-}) {
+function SearchForm({ lastSearch, errorText, handleSearch }) {
 	const {
 		register,
 		handleSubmit,
@@ -28,38 +18,13 @@ function SearchForm({
 		},
 	});
 
-	const [serverError, setServerError] = useState('');
-	const onSearch = async data => {
-		setIsLoading(true);
-		setQuantityCards(calculateQuantityInitialCards());
-		await MoviesApi.searchAll(data.search)
-			.then(res => {
-				setFoundMovies(res);
-				localStorage.setItem(
-					'lastSearch',
-					JSON.stringify({
-						text: data.search,
-						short: data.short,
-						result: res,
-						quantityCards,
-					}),
-				);
-			})
-			.catch(() => {
-				setServerError(
-					'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
-				);
-				setTimeout(() => {
-					setServerError('');
-				}, 2000);
-			})
-			.finally(() => setIsLoading(false));
-	};
-
 	return (
 		<div className='search-form'>
-			<ModalError text={errors?.search?.message || serverError} />
-			<form className='search-form__content' onSubmit={handleSubmit(onSearch)}>
+			<ModalError text={errors?.search?.message || errorText} />
+			<form
+				className='search-form__content'
+				onSubmit={handleSubmit(handleSearch)}
+			>
 				<div className='search-form__wrapper'>
 					<input
 						type='text'
