@@ -12,3 +12,7 @@
 .element-hover:hover {
 	opacity: 0.7;
 }
+
+.not-result {
+	text-align: center;
+}

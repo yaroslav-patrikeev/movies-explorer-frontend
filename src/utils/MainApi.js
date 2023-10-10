@@ -62,6 +62,10 @@ class MainApi {
 	async logout() {
 		return await this.axios.post('/signout');
 	}
+
+	async getSavedMovies() {
+		return await this.axios.get('/movies');
+	}
 }
 
 export default new MainApi();

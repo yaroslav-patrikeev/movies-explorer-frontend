@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 
 import ModalError from '../../ui/modalError/ModalError';
+import ModalSuccess from '../../ui/modalSuccess/ModalSuccess';
 
 import { emailRegExp, nameRegExp } from '../../../constants/regexp.constants';
 import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
@@ -10,7 +10,14 @@ import Layout from '../../layout/Layout';
 
 import './Profile.css';
 
-function Profile({ handleUpdate, errorText, handleLogout }) {
+function Profile({
+	handleUpdate,
+	errorText,
+	handleLogout,
+	successText,
+	isDisabled,
+	setIsDisabled,
+}) {
 	const currentUser = useContext(CurrentUserContext);
 	const [isSaveActive, setIsSaveActive] = useState(false);
 	const {
@@ -37,12 +44,10 @@ function Profile({ handleUpdate, errorText, handleLogout }) {
 		);
 	}, [isDirty, isValid, watch()]);
 
-	const navigation = useNavigate();
-
-	const [isDisabled, setIsDisabled] = useState(true);
 	return (
-		<Layout headerTheme='light' authorized={true} footerHide={true}>
+		<Layout headerTheme='light' isLoggedIn={true} footerHide={true}>
 			<ModalError text={errorText} />
+			<ModalSuccess text={successText} />
 			<main className='main'>
 				<section className='profile'>
 					<form
@@ -122,7 +127,7 @@ function Profile({ handleUpdate, errorText, handleLogout }) {
 									className={`profile__save ${
 										isSaveActive ? 'element-hover' : 'profile__save_disabled'
 									}`}
-									disabled={isSaveActive}
+									disabled={!isSaveActive}
 								>
 									Сохранить
 								</button>
