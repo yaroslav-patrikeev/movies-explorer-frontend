@@ -2,9 +2,9 @@ import { useWindowSize } from '@uidotdev/usehooks';
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
+import Login from './screens/Auth/login/Login';
+import Register from './screens/Auth/register/Register';
 import NotFound from './screens/NotFound/NotFound';
-import Login from './screens/auth/login/Login';
-import Register from './screens/auth/register/Register';
 import Main from './screens/main/Main';
 import Movies from './screens/moviesPages/movies/Movies';
 import SavedMovies from './screens/moviesPages/savedMovies/SavedMovies';
