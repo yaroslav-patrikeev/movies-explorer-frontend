@@ -10,6 +10,7 @@ function SearchForm({
 	handleSearch,
 	type,
 	handleSearchSaved,
+	isRequest,
 }) {
 	const {
 		register,
@@ -52,6 +53,7 @@ function SearchForm({
 								clearErrors('search');
 							}, 2000);
 						}}
+						disabled={isRequest}
 					>
 						Найти
 					</button>

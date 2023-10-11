@@ -6,6 +6,16 @@
 	font-weight: 400;
 }
 
+.root {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.main {
+	margin-bottom: auto;
+}
+
 .element-hover {
 	transition: opacity 0.3s;
 }

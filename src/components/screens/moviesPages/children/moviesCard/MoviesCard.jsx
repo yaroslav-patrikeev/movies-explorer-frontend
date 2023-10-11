@@ -6,6 +6,7 @@ function MoviesCard({
 	isLiked,
 	handleSaveMovie,
 	handleDeleteMovie,
+	isRequest,
 }) {
 	const handleLikeClick = evt => {
 		const element = evt.target;
@@ -52,19 +53,23 @@ function MoviesCard({
 			<h2 className='movies-card__title'>{film.nameRU}</h2>
 
 			{type === 'saved' ? (
-				<div
+				<button
+					type='button'
 					className='movies-card__button movies-card__button_delete'
 					onClick={handleDeleteClick}
-				></div>
+					disabled={isRequest}
+				></button>
 			) : (
-				<div
+				<button
+					type='button'
 					className={`movies-card__button ${
 						isLiked
 							? 'movies-card__button_like_active'
 							: 'movies-card__button_like_passive'
 					} `}
 					onClick={handleLikeClick}
-				></div>
+					disabled={isRequest}
+				></button>
 			)}
 			<p className='movies-card__time'>{getTimeFromMins(film.duration)}</p>
 		</article>

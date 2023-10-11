@@ -8,11 +8,16 @@ function SavedMovies({
 	isLoading,
 	handleDeleteMovie,
 	handleSearchSaved,
+	isRequest,
 }) {
 	return (
 		<Layout headerTheme='light' isLoggedIn={true}>
 			<main className='main'>
-				<SearchForm type='saved' handleSearchSaved={handleSearchSaved} />
+				<SearchForm
+					type='saved'
+					handleSearchSaved={handleSearchSaved}
+					isRequest={isRequest}
+				/>
 				{isLoading && <Preloader />}
 				{Object.keys(savedMovies).length === 0 && (
 					<p className='not-result'>Ничего не найдено</p>
@@ -21,6 +26,7 @@ function SavedMovies({
 					type='saved'
 					foundMovies={savedMovies}
 					handleDeleteMovie={handleDeleteMovie}
+					isRequest={isRequest}
 				/>
 			</main>
 		</Layout>

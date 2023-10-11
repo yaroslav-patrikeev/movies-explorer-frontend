@@ -17,6 +17,7 @@ function Profile({
 	successText,
 	isDisabled,
 	setIsDisabled,
+	isRequest,
 }) {
 	const currentUser = useContext(CurrentUserContext);
 	const [isSaveActive, setIsSaveActive] = useState(false);
@@ -127,7 +128,7 @@ function Profile({
 									className={`profile__save ${
 										isSaveActive ? 'element-hover' : 'profile__save_disabled'
 									}`}
-									disabled={!isSaveActive}
+									disabled={!isSaveActive || isRequest}
 								>
 									Сохранить
 								</button>

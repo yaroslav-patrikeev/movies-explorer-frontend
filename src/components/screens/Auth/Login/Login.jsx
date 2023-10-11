@@ -8,7 +8,7 @@ import AuthHeader from '../children/AuthHeader/AuthHeader';
 
 import './Login.css';
 
-function Login({ handleLogin, errorText }) {
+function Login({ handleLogin, errorText, isRequest }) {
 	const {
 		register,
 		handleSubmit,
@@ -16,7 +16,6 @@ function Login({ handleLogin, errorText }) {
 	} = useForm({
 		mode: 'onChange',
 	});
-
 	return (
 		<>
 			<ModalError text={errorText} />
@@ -58,7 +57,7 @@ function Login({ handleLogin, errorText }) {
 						<AuthFooter
 							buttonText={'Войти'}
 							formType='login'
-							disabled={!isDirty || !isValid}
+							disabled={!isDirty || !isValid || isRequest}
 						/>
 					</form>
 				</div>

@@ -9,6 +9,7 @@ function MoviesCardList({
 	savedMovies,
 	handleSaveMovie,
 	handleDeleteMovie,
+	isRequest,
 }) {
 	return (
 		<div className='movies-card-list'>
@@ -20,6 +21,7 @@ function MoviesCardList({
 						isLiked={savedMovies?.some(
 							savedMovie => savedMovie.movieId === movie.id,
 						)}
+						isRequest={isRequest}
 						key={type === 'saved' ? movie.movieId : movie.id}
 						handleSaveMovie={handleSaveMovie}
 						handleDeleteMovie={handleDeleteMovie}

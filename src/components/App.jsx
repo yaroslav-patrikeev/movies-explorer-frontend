@@ -23,11 +23,12 @@ const Router = () => {
 	const [errorText, setErrorText] = useState('');
 	const [successText, setSuccessText] = useState('');
 	const lastSearch = JSON.parse(localStorage.getItem('lastSearch'));
-	const [foundMovies, setFoundMovies] = useState(lastSearch?.result);
-	const [savedMovies, setSavedMovies] = useState();
+	const [foundMovies, setFoundMovies] = useState(lastSearch?.result || []);
+	const [savedMovies, setSavedMovies] = useState([]);
 	const [quantityCards, setQuantityCards] = useState(lastSearch?.quantityCards);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isDisabled, setIsDisabled] = useState(true);
+	const [isRequest, setIsRequest] = useState(false);
 	const navigator = useNavigate();
 	const size = useWindowSize();
 	const location = useLocation();
@@ -54,28 +55,36 @@ const Router = () => {
 	}, [navigator]);
 
 	const getSavedMovies = async () => {
-		setIsLoading(true);
-		await MainApi.getSavedMovies()
-			.then(res => setSavedMovies(res.data))
-			.catch(console.error)
-			.finally(() => setIsLoading(false));
+		try {
+			setIsLoading(true);
+			const res = await MainApi.getSavedMovies();
+			setSavedMovies(res.data);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	const handleRegister = async data => {
 		try {
+			setIsRequest(true);
 			await MainApi.register(data);
 			navigator('/movies');
 			setIsLoggedIn(true);
 		} catch (error) {
-			setErrorText(error.response.data.message);
+			setErrorText(error.message);
 			setTimeout(() => {
 				setErrorText('');
 			}, 2000);
+		} finally {
+			setIsRequest(false);
 		}
 	};
 
 	const handleUpdate = async data => {
 		try {
+			setIsRequest(true);
 			await MainApi.updateUser(data);
 			setCurrentUser(data);
 			setSuccessText('Данные профиля успешно обновлены');
@@ -88,6 +97,8 @@ const Router = () => {
 			setTimeout(() => {
 				setErrorText('');
 			}, 2000);
+		} finally {
+			setIsRequest(false);
 		}
 	};
 
@@ -99,18 +110,22 @@ const Router = () => {
 
 	const handleLogin = async data => {
 		try {
+			setIsRequest(true);
 			await MainApi.login(data);
 			setIsLoggedIn(true);
 			navigator('/movies');
 		} catch (error) {
-			setErrorText(error.response.data.message);
+			setErrorText(error.message);
 			setTimeout(() => {
 				setErrorText('');
 			}, 2000);
+		} finally {
+			setIsRequest(false);
 		}
 	};
 
 	const handleSearch = async data => {
+		setIsRequest(true);
 		setIsLoading(true);
 		setQuantityCards(calculateQuantityInitialCards(size));
 		await MoviesApi.searchAll(data.search)
@@ -137,20 +152,29 @@ const Router = () => {
 					setErrorText('');
 				}, 2000);
 			})
-			.finally(() => setIsLoading(false));
+			.finally(() => {
+				setIsLoading(false);
+				setIsRequest(false);
+			});
 	};
 
 	const handleSaveMovie = async film => {
-		return await MainApi.saveMovie(film);
+		setIsRequest(true);
+		const movie = await MainApi.saveMovie(film);
+		setIsRequest(false);
+		return movie;
 	};
 
 	const handleDeleteMovie = async id => {
+		setIsRequest(true);
 		const res = await MainApi.deleteMovie(id);
 		setSavedMovies(savedMovies.filter(movie => movie.movieId !== id));
+		setIsRequest(false);
 		return res;
 	};
 
 	const handleSearchSaved = async data => {
+		setIsRequest(true);
 		await getSavedMovies();
 		if (data.search) {
 			setSavedMovies(
@@ -165,6 +189,7 @@ const Router = () => {
 		if (data.short) {
 			setSavedMovies(savedMovies.filter(movie => movie.duration <= 40));
 		}
+		setIsRequest(false);
 	};
 
 	return (
@@ -173,12 +198,22 @@ const Router = () => {
 				<Route path='/' element={<Main isLoggedIn={isLoggedIn} />} />
 				<Route
 					path='/signin'
-					element={<Login handleLogin={handleLogin} errorText={errorText} />}
+					element={
+						<Login
+							handleLogin={handleLogin}
+							errorText={errorText}
+							isRequest={isRequest}
+						/>
+					}
 				/>
 				<Route
 					path='/signup'
 					element={
-						<Register errorText={errorText} handleRegister={handleRegister} />
+						<Register
+							errorText={errorText}
+							handleRegister={handleRegister}
+							isRequest={isRequest}
+						/>
 					}
 				/>
 				<Route
@@ -200,6 +235,7 @@ const Router = () => {
 									savedMovies={savedMovies}
 									handleSaveMovie={handleSaveMovie}
 									handleDeleteMovie={handleDeleteMovie}
+									isRequest={isRequest}
 								/>
 							}
 						/>
@@ -216,6 +252,7 @@ const Router = () => {
 									isLoading={isLoading}
 									handleDeleteMovie={handleDeleteMovie}
 									handleSearchSaved={handleSearchSaved}
+									isRequest={isRequest}
 								/>
 							}
 						/>
@@ -234,6 +271,7 @@ const Router = () => {
 									successText={successText}
 									isDisabled={isDisabled}
 									setIsDisabled={setIsDisabled}
+									isRequest={isRequest}
 								/>
 							}
 						/>

@@ -19,6 +19,7 @@ function Movies({
 	savedMovies,
 	handleSaveMovie,
 	handleDeleteMovie,
+	isRequest,
 }) {
 	useEffect(() => {
 		setQuantityCards({
@@ -29,11 +30,12 @@ function Movies({
 
 	return (
 		<Layout headerTheme='light' isLoggedIn={true}>
-			<main>
+			<main className='main'>
 				<SearchForm
 					lastSearch={lastSearch}
 					errorText={errorText}
 					handleSearch={handleSearch}
+					isRequest={isRequest}
 				/>
 				{isLoading && <Preloader />}
 				{Object.keys(foundMovies).length === 0 && (
@@ -45,6 +47,7 @@ function Movies({
 					savedMovies={savedMovies}
 					handleSaveMovie={handleSaveMovie}
 					handleDeleteMovie={handleDeleteMovie}
+					isRequest={isRequest}
 				/>
 
 				{quantityCards?.cards < foundMovies?.length && (
