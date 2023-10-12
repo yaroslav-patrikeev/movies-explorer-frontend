@@ -11,6 +11,8 @@ function SearchForm({
 	type,
 	handleSearchSaved,
 	isRequest,
+	foundMovies,
+	savedMovies,
 }) {
 	const {
 		register,
@@ -25,6 +27,13 @@ function SearchForm({
 			short: lastSearch?.short,
 		},
 	});
+
+	const handleClick = () => {
+		if (foundMovies?.length !== 0 && type !== 'saved')
+			handleSearch({ ...getValues(), short: !getValues('short') });
+		if (type === 'saved' && savedMovies?.length !== 0)
+			handleSearchSaved({ ...getValues(), short: !getValues('short') });
+	};
 	return (
 		<div className='search-form'>
 			<ModalError text={errors?.search?.message || errorText} />
@@ -63,14 +72,7 @@ function SearchForm({
 						type='checkbox'
 						className='search-form__checkbox'
 						{...register('short')}
-						onClick={() =>
-							type !== 'saved'
-								? handleSearch({ ...getValues(), short: !getValues('short') })
-								: handleSearchSaved({
-										...getValues(),
-										short: !getValues('short'),
-								  })
-						}
+						onClick={handleClick}
 					/>
 					<span className='search-form__slider'></span>
 					<span className='search-form__slider-text'>Короткометражки</span>

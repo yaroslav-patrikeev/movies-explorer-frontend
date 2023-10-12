@@ -36,6 +36,7 @@ function Movies({
 					errorText={errorText}
 					handleSearch={handleSearch}
 					isRequest={isRequest}
+					foundMovies={foundMovies}
 				/>
 				{isLoading && <Preloader />}
 				{Object.keys(foundMovies).length === 0 && (

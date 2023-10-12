@@ -17,6 +17,7 @@ function SavedMovies({
 					type='saved'
 					handleSearchSaved={handleSearchSaved}
 					isRequest={isRequest}
+					savedMovies={savedMovies}
 				/>
 				{isLoading && <Preloader />}
 				{Object.keys(savedMovies).length === 0 && (

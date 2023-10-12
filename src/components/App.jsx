@@ -104,6 +104,7 @@ const Router = () => {
 
 	const handleLogout = async () => {
 		await MainApi.logout();
+		localStorage.removeItem('lastSearch');
 		setIsLoggedIn(false);
 		navigator('/');
 	};
