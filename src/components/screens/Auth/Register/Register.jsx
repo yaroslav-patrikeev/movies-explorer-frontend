@@ -12,7 +12,7 @@ import AuthHeader from '../children/AuthHeader/AuthHeader';
 
 import './Register.css';
 
-function Register({ errorText, handleRegister }) {
+function Register({ errorText, handleRegister, isRequest }) {
 	const {
 		register,
 		handleSubmit,
@@ -89,7 +89,7 @@ function Register({ errorText, handleRegister }) {
 						/>
 						<AuthFooter
 							buttonText={'Зарегистрироваться'}
-							disabled={!isDirty || !isValid}
+							disabled={!isDirty || !isValid || isRequest}
 							formType='register'
 						/>
 					</form>

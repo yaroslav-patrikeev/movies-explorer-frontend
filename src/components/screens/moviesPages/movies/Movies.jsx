@@ -20,6 +20,8 @@ function Movies({
 	handleSaveMovie,
 	handleDeleteMovie,
 	isRequest,
+	filteredMovies,
+	setFilteredMovies,
 }) {
 	useEffect(() => {
 		setQuantityCards({
@@ -36,10 +38,12 @@ function Movies({
 					errorText={errorText}
 					handleSearch={handleSearch}
 					isRequest={isRequest}
+					setFilteredMovies={setFilteredMovies}
+					filteredMovies={filteredMovies}
 					foundMovies={foundMovies}
 				/>
 				{isLoading && <Preloader />}
-				{Object.keys(foundMovies).length === 0 && (
+				{Object.keys(filteredMovies).length === 0 && (
 					<p className='not-result'>Ничего не найдено</p>
 				)}
 				<MoviesCardList
@@ -49,9 +53,10 @@ function Movies({
 					handleSaveMovie={handleSaveMovie}
 					handleDeleteMovie={handleDeleteMovie}
 					isRequest={isRequest}
+					filteredMovies={filteredMovies}
 				/>
 
-				{quantityCards?.cards < foundMovies?.length && (
+				{quantityCards?.cards < filteredMovies?.length && (
 					<MoreFilmsButton
 						quantityCards={quantityCards}
 						setQuantityCards={setQuantityCards}

@@ -10,16 +10,9 @@ class MoviesApi {
 		});
 	}
 
-	async searchAll(req) {
+	async searchAll() {
 		const movies = await this.axios.get();
-		const request = req.toLowerCase();
-		const result = movies.data.filter(movie => {
-			return (
-				movie['nameRU'].toLowerCase().includes(request) ||
-				movie['nameEN'].toLowerCase().includes(request)
-			);
-		});
-		return result;
+		return movies;
 	}
 }
 

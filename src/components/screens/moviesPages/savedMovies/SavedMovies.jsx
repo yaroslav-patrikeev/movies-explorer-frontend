@@ -20,12 +20,10 @@ function SavedMovies({
 					savedMovies={savedMovies}
 				/>
 				{isLoading && <Preloader />}
-				{Object.keys(savedMovies).length === 0 && (
-					<p className='not-result'>Ничего не найдено</p>
-				)}
+				{!savedMovies[0] && <p className='not-result'>Ничего не найдено</p>}
 				<MoviesCardList
 					type='saved'
-					foundMovies={savedMovies}
+					filteredMovies={savedMovies}
 					handleDeleteMovie={handleDeleteMovie}
 					isRequest={isRequest}
 				/>

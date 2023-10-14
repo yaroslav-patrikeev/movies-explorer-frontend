@@ -11,8 +11,9 @@ function SearchForm({
 	type,
 	handleSearchSaved,
 	isRequest,
+	filteredMovies,
+	setFilteredMovies,
 	foundMovies,
-	savedMovies,
 }) {
 	const {
 		register,
@@ -29,9 +30,19 @@ function SearchForm({
 	});
 
 	const handleClick = () => {
-		if (foundMovies?.length !== 0 && type !== 'saved')
-			handleSearch({ ...getValues(), short: !getValues('short') });
-		if (type === 'saved' && savedMovies?.length !== 0)
+		if (filteredMovies?.length !== 0 && type !== 'saved')
+			!getValues('short')
+				? setFilteredMovies(
+						filteredMovies.filter(movie => movie.duration <= 40),
+				  )
+				: setFilteredMovies(
+						foundMovies.filter(
+							movie =>
+								movie['nameRU'].toLowerCase().includes(getValues('search')) ||
+								movie['nameEN'].toLowerCase().includes(getValues('search')),
+						),
+				  );
+		if (type === 'saved')
 			handleSearchSaved({ ...getValues(), short: !getValues('short') });
 	};
 	return (

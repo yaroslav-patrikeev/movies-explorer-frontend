@@ -33,7 +33,7 @@ class MainApi {
 	}
 
 	async saveMovie(movie) {
-		await this.axios.post('/movies', {
+		return await this.axios.post('/movies', {
 			country: movie.country,
 			director: movie.director,
 			duration: movie.duration,

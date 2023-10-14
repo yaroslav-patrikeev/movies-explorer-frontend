@@ -4,17 +4,17 @@ import './MoviesCardList.css';
 
 function MoviesCardList({
 	type,
-	foundMovies,
 	quantityCards,
 	savedMovies,
 	handleSaveMovie,
 	handleDeleteMovie,
 	isRequest,
+	filteredMovies,
 }) {
 	return (
 		<div className='movies-card-list'>
 			<div className='movies-card-list__content'>
-				{foundMovies?.slice(0, quantityCards?.cards).map(movie => (
+				{filteredMovies?.slice(0, quantityCards?.cards).map(movie => (
 					<MoviesCard
 						type={type}
 						film={movie}

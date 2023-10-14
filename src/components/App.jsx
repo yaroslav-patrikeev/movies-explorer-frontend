@@ -23,7 +23,12 @@ const Router = () => {
 	const [errorText, setErrorText] = useState('');
 	const [successText, setSuccessText] = useState('');
 	const lastSearch = JSON.parse(localStorage.getItem('lastSearch'));
-	const [foundMovies, setFoundMovies] = useState(lastSearch?.result || []);
+	const [foundMovies, setFoundMovies] = useState(
+		lastSearch?.result.foundMovies || [],
+	);
+	const [filteredMovies, setFilteredMovies] = useState(
+		lastSearch?.result.filteredMovies || [],
+	);
 	const [savedMovies, setSavedMovies] = useState([]);
 	const [quantityCards, setQuantityCards] = useState(lastSearch?.quantityCards);
 	const [isLoading, setIsLoading] = useState(false);
@@ -105,6 +110,7 @@ const Router = () => {
 	const handleLogout = async () => {
 		await MainApi.logout();
 		localStorage.removeItem('lastSearch');
+		setCurrentUser({});
 		setIsLoggedIn(false);
 		navigator('/');
 	};
@@ -126,42 +132,56 @@ const Router = () => {
 	};
 
 	const handleSearch = async data => {
-		setIsRequest(true);
-		setIsLoading(true);
 		setQuantityCards(calculateQuantityInitialCards(size));
-		await MoviesApi.searchAll(data.search)
-			.then(res => {
-				if (data.short) {
-					res = res.filter(movie => movie.duration <= 40);
-				}
-				setFoundMovies(res);
-				localStorage.setItem(
-					'lastSearch',
-					JSON.stringify({
-						text: data.search,
-						short: data.short,
-						result: res,
-						quantityCards,
-					}),
-				);
-			})
-			.catch(() => {
+		let allFilms = foundMovies;
+		if (!foundMovies[0]) {
+			try {
+				setIsRequest(true);
+				setIsLoading(true);
+				allFilms = (await MoviesApi.searchAll()).data;
+			} catch (error) {
 				setErrorText(
 					'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
 				);
 				setTimeout(() => {
 					setErrorText('');
 				}, 2000);
-			})
-			.finally(() => {
+			} finally {
 				setIsLoading(false);
 				setIsRequest(false);
-			});
+			}
+		}
+		const filteredFilms = allFilms.filter(movie => {
+			return (
+				movie['nameRU'].toLowerCase().includes(data.search) ||
+				movie['nameEN'].toLowerCase().includes(data.search)
+			);
+		});
+		if (data.short) {
+			setFilteredMovies(filteredFilms.filter(movie => movie.duration <= 40));
+		} else {
+			setFilteredMovies(filteredFilms);
+		}
+		localStorage.setItem(
+			'lastSearch',
+			JSON.stringify({
+				text: data.search,
+				short: data.short,
+				result: {
+					foundMovies: allFilms,
+					filteredMovies: data.short
+						? filteredFilms.filter(movie => movie.duration <= 40)
+						: filteredFilms,
+				},
+				quantityCards,
+			}),
+		);
 	};
 
 	const handleSaveMovie = async film => {
 		setIsRequest(true);
 		const movie = await MainApi.saveMovie(film);
+		setSavedMovies([...savedMovies, movie.data]);
 		setIsRequest(false);
 		return movie;
 	};
@@ -197,26 +217,30 @@ const Router = () => {
 		<CurrentUserContext.Provider value={currentUser}>
 			<Routes>
 				<Route path='/' element={<Main isLoggedIn={isLoggedIn} />} />
-				<Route
-					path='/signin'
-					element={
-						<Login
-							handleLogin={handleLogin}
-							errorText={errorText}
-							isRequest={isRequest}
+				{!isLoggedIn && (
+					<>
+						<Route
+							path='/signin'
+							element={
+								<Login
+									handleLogin={handleLogin}
+									errorText={errorText}
+									isRequest={isRequest}
+								/>
+							}
 						/>
-					}
-				/>
-				<Route
-					path='/signup'
-					element={
-						<Register
-							errorText={errorText}
-							handleRegister={handleRegister}
-							isRequest={isRequest}
+						<Route
+							path='/signup'
+							element={
+								<Register
+									errorText={errorText}
+									handleRegister={handleRegister}
+									isRequest={isRequest}
+								/>
+							}
 						/>
-					}
-				/>
+					</>
+				)}
 				<Route
 					path='/movies'
 					element={
@@ -227,6 +251,8 @@ const Router = () => {
 									setQuantityCards={setQuantityCards}
 									quantityCards={quantityCards}
 									foundMovies={foundMovies}
+									filteredMovies={filteredMovies}
+									setFilteredMovies={setFilteredMovies}
 									lastSearch={lastSearch}
 									setIsLoading={setIsLoading}
 									isLoading={isLoading}
@@ -278,7 +304,7 @@ const Router = () => {
 						/>
 					}
 				/>
-				<Route path='*' element={<NotFound />} />
+				<Route path='*' element={<NotFound navigator={navigator} />} />
 			</Routes>
 		</CurrentUserContext.Provider>
 	);
