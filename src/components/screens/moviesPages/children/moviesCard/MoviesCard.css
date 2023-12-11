@@ -4,11 +4,14 @@
 	row-gap: 10px;
 }
 
+.movies-card__link {
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
 .movies-card__image {
 	width: 270px;
 	height: 151px;
-	grid-column-start: 1;
-	grid-column-end: 3;
 }
 
 .movies-card__title {
@@ -22,6 +25,8 @@
 	width: 24px;
 	height: 24px;
 	border-radius: 36px;
+	border: 0;
+	outline: 0;
 	background-color: #f9f9f9;
 	background-repeat: no-repeat;
 	background-size: 10px 8.5px;

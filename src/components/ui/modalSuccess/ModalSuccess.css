@@ -1,0 +1,32 @@
+@keyframes showModalSuccess {
+	from {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.modal-success {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	box-sizing: border-box;
+	text-align: center;
+	max-width: 270px;
+	padding: 10px;
+	background-color: #5cb85c;
+	color: white;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	animation: showModalSuccess 0.4s ease-out;
+	display: none;
+	font-size: 14px;
+}
+
+.modal-success_show {
+	display: flex;
+}

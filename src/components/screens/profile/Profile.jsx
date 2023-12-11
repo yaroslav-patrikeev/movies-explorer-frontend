@@ -1,55 +1,108 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
+import ModalError from '../../ui/modalError/ModalError';
+import ModalSuccess from '../../ui/modalSuccess/ModalSuccess';
+
+import { emailRegExp, nameRegExp } from '../../../constants/regexp.constants';
+import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
 import Layout from '../../layout/Layout';
 
 import './Profile.css';
 
-function Profile() {
-	const navigation = useNavigate();
-	const [values, setValues] = useState({
-		name: 'Виталий',
-		email: 'pochta@yandex.ru',
+function Profile({
+	handleUpdate,
+	errorText,
+	handleLogout,
+	successText,
+	isDisabled,
+	setIsDisabled,
+	isRequest,
+}) {
+	const currentUser = useContext(CurrentUserContext);
+	const [isSaveActive, setIsSaveActive] = useState(false);
+	const {
+		register,
+		handleSubmit,
+		setValue,
+		watch,
+		formState: { errors, isDirty, isValid },
+	} = useForm({
+		mode: 'onChange',
 	});
 
-	const [isDisabled, setIsDisabled] = useState(true);
+	useEffect(() => {
+		setValue('userName', currentUser.userName);
+		setValue('email', currentUser.email);
+	}, [currentUser]);
 
-	const handleChange = evt => {
-		const { name, value } = evt.target;
-		setValues({ ...values, [name]: value });
-	};
+	useEffect(() => {
+		setIsSaveActive(
+			isDirty &&
+				isValid &&
+				(currentUser.userName !== watch('userName') ||
+					currentUser.email !== watch('email')),
+		);
+	}, [isDirty, isValid, watch()]);
+
 	return (
-		<Layout headerTheme='light' authorized={true} footerHide={true}>
+		<Layout headerTheme='light' isLoggedIn={true} footerHide={true}>
+			<ModalError text={errorText} />
+			<ModalSuccess text={successText} />
 			<main className='main'>
 				<section className='profile'>
-					<form className='profile__content'>
-						<p className='profile__greetings'>Привет, Виталий!</p>
+					<form
+						className='profile__content'
+						onSubmit={handleSubmit(handleUpdate)}
+					>
+						<p className='profile__greetings'>
+							Привет, {currentUser?.userName}!
+						</p>
 						<div className='profile__name'>
 							<span className='profile__key'>Имя</span>
 							<input
-								name='name'
 								type='text'
 								className='profile__input'
-								value={values['name']}
-								onInput={handleChange}
 								disabled={isDisabled}
 								minLength={2}
 								maxLength={40}
 								required
+								{...register('userName', {
+									required: 'Это обязательное поле!',
+									minLength: {
+										value: 2,
+										message: 'Минимальная длина имени - 2 символа!',
+									},
+									maxLength: {
+										value: 40,
+										message: 'Максимальная длина имени - 40 символов!',
+									},
+									pattern: {
+										value: nameRegExp,
+										message: 'Некорректное имя!',
+									},
+								})}
 							/>
 						</div>
 						<div className='profile__email'>
 							<span className='profile__key'>E-mail</span>
 							<input
 								type='email'
-								name='email'
 								className='profile__input'
-								value={values['email']}
-								onInput={handleChange}
 								disabled={isDisabled}
 								required
+								{...register('email', {
+									required: 'Это обязательное поле!',
+									pattern: {
+										value: emailRegExp,
+										message: 'Некорректный email!',
+									},
+								})}
 							/>
 						</div>
+						{Object.keys(errors).length > 0 && (
+							<span className='profile__save-error'>Некорректные данные</span>
+						)}
 						{isDisabled ? (
 							<>
 								<button
@@ -61,7 +114,7 @@ function Profile() {
 								</button>
 								<button
 									type='button'
-									onClick={() => navigation('/')}
+									onClick={handleLogout}
 									className='profile__logout-button element-hover'
 								>
 									Выйти из аккаунта
@@ -70,7 +123,13 @@ function Profile() {
 						) : (
 							<>
 								<span className='profile__save-error'></span>
-								<button type='submit' className='profile__save element-hover'>
+								<button
+									type='submit'
+									className={`profile__save ${
+										isSaveActive ? 'element-hover' : 'profile__save_disabled'
+									}`}
+									disabled={!isSaveActive || isRequest}
+								>
 									Сохранить
 								</button>
 							</>

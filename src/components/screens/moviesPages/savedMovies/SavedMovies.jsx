@@ -1,15 +1,32 @@
 import Layout from '../../../layout/Layout';
-import MoreFilmsButton from '../children/moreFilmsButton/MoreFilmsButton';
 import MoviesCardList from '../children/moviesCardList/MoviesCardList';
+import Preloader from '../children/preloader/Preloader';
 import SearchForm from '../children/searchForm/SearchForm';
 
-function SavedMovies() {
+function SavedMovies({
+	savedMovies,
+	isLoading,
+	handleDeleteMovie,
+	handleSearchSaved,
+	isRequest,
+}) {
 	return (
-		<Layout headerTheme='light' authorized={true}>
+		<Layout headerTheme='light' isLoggedIn={true}>
 			<main className='main'>
-				<SearchForm />
-				<MoviesCardList type='saved' />
-				<MoreFilmsButton />
+				<SearchForm
+					type='saved'
+					handleSearchSaved={handleSearchSaved}
+					isRequest={isRequest}
+					savedMovies={savedMovies}
+				/>
+				{isLoading && <Preloader />}
+				{!savedMovies[0] && <p className='not-result'>Ничего не найдено</p>}
+				<MoviesCardList
+					type='saved'
+					filteredMovies={savedMovies}
+					handleDeleteMovie={handleDeleteMovie}
+					isRequest={isRequest}
+				/>
 			</main>
 		</Layout>
 	);
